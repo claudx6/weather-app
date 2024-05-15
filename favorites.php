@@ -85,6 +85,41 @@ function storePhoto()
     }
 }
 
+function deletePhoto($id) {
+    try {
+        session_start();
+        $user = $_SESSION['user'];
+        $location = $_POST['name'];
+        $dbservername = "localhost";
+        $dbusername = "root";
+        $dbpassword = "";
+        $dbname = "weatherapp";
+
+        $conn = new mysqli($dbservername, $dbusername, $dbpassword, $dbname);
+
+        $sql = "DELETE FROM photo WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+
+        if ($stmt->execute()) {
+            echo json_encode("La foto ha sido eliminada");
+        } else {
+            echo json_encode("Error, no se ha podido eliminar");
+        }
+    } catch (Exception $e) {
+        echo json_encode("Error: " . $e->getMessage());
+    } finally {
+        $conn->close();
+    }
+}
+
+// llamada a la función para eliminar una foto
+if (isset($_POST['deletePhoto'])) {
+    $id = $_POST['id'];
+    deletePhoto($id);
+}
+
+
 
 function getFavorite()
 {

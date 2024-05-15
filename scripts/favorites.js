@@ -146,6 +146,13 @@ function refreshPhotos(location) {
                 let photo = document.createElement('img')
                 photo.src = url["url"]
                 photo.classList.add('d-block', 'w-100', 'border', 'border-3', 'border-danger-subtle', 'rounded-4')
+                
+                let deleteButton = document.createElement('button');
+                deleteButton.textContent = 'Delete';
+                deleteButton.classList.add('btn', 'btn-danger', 'btn-sm', 'delete-button');
+                deleteButton.addEventListener('click', () => deletePhoto(url.id));
+            
+
                 let carouselItem = document.createElement('div')
                 carouselItem.classList.add('carousel-item')
                 carouselItem.append(photo)
@@ -157,4 +164,29 @@ function refreshPhotos(location) {
         .catch((error) => { console.log(error) })
 }
 
-export { getFavorites, addFavorite, requestUploadPhoto, refreshPhotos }
+
+function deletePhoto(id) {
+    const formData = new FormData();
+    formData.append('deletePhoto', true);
+    formData.append('id', id);
+
+    const options = {
+        method: 'POST',
+        body: formData
+    };
+
+    fetch("./favorites.php", options)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => { 
+            console.log(error);
+        });
+}
+
+
+
+export { getFavorites, addFavorite, requestUploadPhoto, refreshPhotos, deletePhoto };

@@ -2,7 +2,7 @@ import { fetchLocation, defaultLocation, reverseGeocoding } from "./scripts/loca
 import { fetchMeteo } from "./scripts/meteoApi.js";
 import { updateDashboard, updateSuggestions, setUserDashboard } from "./scripts/dashboards.js";
 import { requestLogin, requestLogout, checkLogin, loggedIn } from "./scripts/login.js";
-import { addFavorite, requestUploadPhoto, refreshPhotos } from "./scripts/favorites.js";
+import { addFavorite, requestUploadPhoto, refreshPhotos  } from "./scripts/favorites.js";
 import { mostrarNoticias } from "./scripts/newsApi.js";
 
 let targetLocation = null;
@@ -18,11 +18,17 @@ function showOffcanvas(event) {
     document.querySelector('#offcanvas-lat').innerHTML = targetLocation.lat;
     document.querySelector('#offcanvas-lon').innerHTML = targetLocation.lon;
     offCanvas.show();
+
 }
 
 function uploadPhotoModalShow() {
     document.querySelector('#photoLocation').value = targetLocation.name;
 }
+
+function deletePhoto() {
+ 
+}
+
 
 function addFavoriteButton() {
     let favorite = {
