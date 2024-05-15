@@ -339,6 +339,13 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="container">
+                        <h3>Últimes notícies sobre el temps</h3>
+                        <!-- contenedor donde se cargarán las noticias -->
+                        <div id="noticias" class="row"></div>
+                    </div>
+
                 </div>
             </div>
         </main>

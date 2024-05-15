@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `weatherapp`
 --
-
+CREATE DATABASE IF NOT EXISTS weatherapp;
+USE weatherapp;
 -- --------------------------------------------------------
 
 --
@@ -33,7 +34,7 @@ CREATE TABLE `favorite` (
   `lat` float DEFAULT NULL,
   `lon` float DEFAULT NULL,
   `user` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `favorite`
@@ -58,7 +59,7 @@ CREATE TABLE `photo` (
   `user` int DEFAULT NULL,
   `location` varchar(100) DEFAULT NULL,
   `url` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `photo`
@@ -81,7 +82,7 @@ CREATE TABLE `user` (
   `id` int NOT NULL,
   `name` varchar(50) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `user`
